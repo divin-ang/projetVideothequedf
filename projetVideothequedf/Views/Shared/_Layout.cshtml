@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Videotheque.net</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" style="background-color:inherit;margin-right:14em ;padding-top:2em;border:none" 
+                            type="button" 
+                            data-toggle="dropdown">
+                        Menu
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Classement des Films", "ClassementFilm", "Film")</li>
+                        <li>@Html.ActionLink("Vidéothèque", "Index", "Film")</li>
+                        <li>@Html.ActionLink("Liste des Clients", "Index", "Client")</li>
+                        <li>@Html.ActionLink("Liste des DVD empruntés", "dvdEmprunte", "Home")</li>
+                        <li>@Html.ActionLink("Faire un prêt", "Index", "Pret")</li>
+                    </ul>
+                </div>
+           
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @Html.ActionLink("FilmManager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+
+                    <li>@Html.ActionLink("Vidéothèque", "Index", "Film")</li>
+                    <li>@Html.ActionLink("Liste des Clients", "Index", "Client")</li>
+                    <li>@Html.ActionLink("Liste des DVD empruntés", "dvdEmprunte", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+         
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

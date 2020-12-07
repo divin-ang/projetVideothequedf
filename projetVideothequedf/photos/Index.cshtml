@@ -1,0 +1,48 @@
+﻿<link rel="stylesheet" href="~/Content/homeIndex.css" />
+
+@model PagedList.IPagedList<projetVideothequedf.Models.Films>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <p id="bars-recherche">
+        @Html.TextBox("SearchName")<input type="submit" value="Search"  placeholder=""/>
+    </p>
+}
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>titre</th>
+            <th>duree</th>
+            
+            <th>note</th>
+        </tr>
+    </thead>
+    <tbody>@if (Model.Count() == 0) {
+        <tr>
+            <td colspan="3" style="color:red "></td>
+        </tr>
+
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.titre</td>
+        <td>
+            @{ 
+                int h = (int)(item.duree) / 60;
+                int m = (int)(item.duree) %60;
+            }
+            @h h: @m 
+        
+        </td>
+        
+        <td>@item.note</td>
+    </tr>
+        }
+    }
+    </tbody>
+</table>
