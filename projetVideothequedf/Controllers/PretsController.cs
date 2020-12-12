@@ -12,144 +12,111 @@ using projetVideothequedf.Models;
 
 namespace projetVideothequedf.Controllers
 {
-    public class FilmController : Controller
+    public class PretsController : Controller
     {
         private VideothequeContext db = new VideothequeContext();
 
-        public ActionResult topN(string client)
+        // GET: Prets
+        public ActionResult Preter()
         {
-          
-            if(client == null)
-            {
-                client = "";
-            }
-            var query =
-             (from  c in db.Clients
-              join detailPret in db.DetailsPrets on c.id equals detailPret.idClient
-              join film in db.Films on detailPret.idFilm equals film.id
-              select new
-              {
-                  nom = c.nom, prenom =c.prenom, adresse= c.addresse, email=c.email,
-                  telephone=c.telephone,titre =film.titre,icon=film.icon,dateDebut=detailPret.dateDebut,
-                  dateFin = detailPret.dateFin
-              }).ToList()
-               .Select(film => new ClientLocation {
-                   nom =film.nom,
-                   prenom = film.prenom,
-                   addresse = film.adresse,
-                   email = film.email,
-                   telephone = film.telephone,
-                   titre = film.titre,
-                   icon = film.icon,
-                   dateDebut = film.dateDebut,
-                   dateFin = film.dateFin
-               }).Where(x=>x.prenom.Contains(client));
-
-            ViewBag.client = new SelectList(db.Clients,"prenom", "prenom", "email");
-            ViewBag.Model = query;
-            return View(query.ToList());
-
+            return View();
         }
-
-
-        // GET: Film
         public async Task<ActionResult> Index()
         {
-            return View(await db.Films.ToListAsync());
+            return View(await db.Prets.ToListAsync());
         }
 
-        // GET: Film/Details/5
+        // GET: Prets/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Films films = await db.Films.FindAsync(id);
-            if (films == null)
+            Pret pret = await db.Prets.FindAsync(id);
+            if (pret == null)
             {
                 return HttpNotFound();
             }
-            return View(films);
+            return View(pret);
         }
 
-        // GET: Film/Create
+        // GET: Prets/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Film/Create
+        // POST: Prets/Create
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,duree,year,note,titre,Acteur_id,price,icon,Genre")] Films films)
+        public async Task<ActionResult> Create([Bind(Include = "id,Clients_id,cout")] Pret pret)
         {
             if (ModelState.IsValid)
             {
-                db.Films.Add(films);
+                db.Prets.Add(pret);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(films);
+            return View(pret);
         }
 
-        // GET: Film/Edit/5
+        // GET: Prets/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Films films = await db.Films.FindAsync(id);
-            if (films == null)
+            Pret pret = await db.Prets.FindAsync(id);
+            if (pret == null)
             {
                 return HttpNotFound();
             }
-            return View(films);
+            return View(pret);
         }
 
-        // POST: Film/Edit/5
+        // POST: Prets/Edit/5
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,duree,year,note,titre,Acteur_id,price,icon,Genre,exemplaires")] Films films)
+        public async Task<ActionResult> Edit([Bind(Include = "id,Clients_id,cout")] Pret pret)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(films).State = EntityState.Modified;
+                db.Entry(pret).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(films);
+            return View(pret);
         }
 
-        // GET: Film/Delete/5
+        // GET: Prets/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Films films = await db.Films.FindAsync(id);
-            if (films == null)
+            Pret pret = await db.Prets.FindAsync(id);
+            if (pret == null)
             {
                 return HttpNotFound();
             }
-            return View(films);
+            return View(pret);
         }
 
-        // POST: Film/Delete/5
+        // POST: Prets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Films films = await db.Films.FindAsync(id);
-            db.Films.Remove(films);
+            Pret pret = await db.Prets.FindAsync(id);
+            db.Prets.Remove(pret);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

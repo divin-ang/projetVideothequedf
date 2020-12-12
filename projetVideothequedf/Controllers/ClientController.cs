@@ -54,7 +54,7 @@ namespace projetVideothequedf.Controllers
             {
                 db.Clients.Add(client);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Preter","DetailPret");
             }
 
             return View(client);
@@ -116,7 +116,47 @@ namespace projetVideothequedf.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        public ActionResult Emprunteurs(string f)
+        {
 
+            if (f == null)
+            {
+                f = "";
+            }
+            var query =
+             (from c in db.Clients
+              join detailPret in db.DetailsPrets on c.id equals detailPret.idClient
+              join film in db.Films on detailPret.idFilm equals film.id
+              select new
+              {
+                  nom = c.nom,
+                  prenom = c.prenom,
+                  adresse = c.addresse,
+                  email = c.email,
+                  telephone = c.telephone,
+                  titre = film.titre,
+                  icon = film.icon,
+                  dateDebut = detailPret.dateDebut,
+                  dateFin = detailPret.dateFin
+              }).ToList()
+               .Select(film => new ClientLocation
+               {
+                   nom = film.nom,
+                   prenom = film.prenom,
+                   addresse = film.adresse,
+                   email = film.email,
+                   telephone = film.telephone,
+                   titre = film.titre,
+                   icon = film.icon,
+                   dateDebut = film.dateDebut,
+                   dateFin = film.dateFin
+               }).Where(x => x.titre.Contains(f));
+
+            ViewBag.films = new SelectList(db.Films, "titre", "titre", "year");
+            ViewBag.Model = query;
+            return View(query.ToList());
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

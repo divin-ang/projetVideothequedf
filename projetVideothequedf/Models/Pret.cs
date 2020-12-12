@@ -15,9 +15,15 @@ namespace projetVideothequedf.Models
 
         public int id { get; set; }
 
-     
+
+
        
-      
+       
+     
+        public int Clients_id { get; set; }
+        
+
+     
         public Nullable<decimal> cout { get; set; }
 
         public virtual Client Clients{ get; set; }

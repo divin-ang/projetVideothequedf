@@ -4,72 +4,63 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Liste de films</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.duree)
+           Titre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.year)
+        Année de sortie
         </th>
+       
         <th>
-            @Html.DisplayNameFor(model => model.note)
+           Durée
         </th>
+        
         <th>
-            @Html.DisplayNameFor(model => model.titre)
+           Prix
         </th>
+       
         <th>
-            @Html.DisplayNameFor(model => model.Acteur_id)
+            Genre
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.icon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
+        <th>Nombre d'exemplaires</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.duree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.titre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Acteur_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.icon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.titre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.year)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.duree)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Genre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.exemplaires)
+    </td>
+
+    <td>
+        @Html.ActionLink("Modifier", "Edit", new { id = item.id }) |
+   
+        @Html.ActionLink("Supprimer", "Delete", new { id = item.id })
+    </td>
+</tr>
 }
 
 </table>

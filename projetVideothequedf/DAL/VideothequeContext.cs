@@ -24,19 +24,27 @@ namespace projetVideothequedf.DAL
 
         public DbSet<DetailPret> DetailsPrets { get; set; }
         public DbSet<DVD> DVDs { get; set; }
+        
         public DbSet<Realisateur> Realisateurs { get; set; }
         public DbSet<Films> Films { get; set; }
-      
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
-            Database.SetInitializer<VideothequeContext>(null);
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+
+
+
+
+
         }
 
-     
 
-      
+
+
     }
 }

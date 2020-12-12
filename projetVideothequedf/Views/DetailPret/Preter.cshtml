@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Preter";
+}
+
+<h2>Preter</h2>
+@using (Html.BeginForm("Preter", "DetailPret", FormMethod.Post))
+{
+   
+<div style="margin-bottom:2em;">
+  
+    @Html.DropDownList("client", (SelectList)ViewBag.Clients, "Selectionner le client  ", new { style = "width: 25em; height:2em;" })</div>
+<div style="margin-bottom:2em">
+
+    @Html.DropDownList("film", (SelectList)ViewBag.Films, "Selectionner un film ", new { style = "width: 25em; height:2em;" })
+</div>
+   
+    <input type="submit" value="Valider" />
+
+    <p style="margin-top:1em">  @Html.ActionLink("Nouveau client ? Cliquez ici pour l'ajouter", "Create", "Client")</p>
+
+}

@@ -45,11 +45,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="iTextSharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <HintPath>..\packages\iTextSharp-LGPL.4.1.6\lib\iTextSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.2\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xtra.5.5.13.2\lib\itextsharp.xtra.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -84,6 +96,9 @@
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -164,73 +179,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActeursController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\DetailPretontroller.cs" />
+    <Compile Include="Controllers\DetailPretController.cs" />
     <Compile Include="Controllers\DVDsController.cs" />
+    <Compile Include="Controllers\FactureController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PretController.cs" />
+    <Compile Include="Controllers\PretsController.cs" />
     <Compile Include="DAL\VideothequeContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012041210266_Initial.cs" />
-    <Compile Include="Migrations\202012041210266_Initial.Designer.cs">
-      <DependentUpon>202012041210266_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041245578_Initial1.cs" />
-    <Compile Include="Migrations\202012041245578_Initial1.Designer.cs">
-      <DependentUpon>202012041245578_Initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041509322_Initial2.cs" />
-    <Compile Include="Migrations\202012041509322_Initial2.Designer.cs">
-      <DependentUpon>202012041509322_Initial2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041714070_Initial3.cs" />
-    <Compile Include="Migrations\202012041714070_Initial3.Designer.cs">
-      <DependentUpon>202012041714070_Initial3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041730417_Initial4.cs" />
-    <Compile Include="Migrations\202012041730417_Initial4.Designer.cs">
-      <DependentUpon>202012041730417_Initial4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041743216_Initial5.cs" />
-    <Compile Include="Migrations\202012041743216_Initial5.Designer.cs">
-      <DependentUpon>202012041743216_Initial5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041750297_Initial6.cs" />
-    <Compile Include="Migrations\202012041750297_Initial6.Designer.cs">
-      <DependentUpon>202012041750297_Initial6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041753203_Initial7.cs" />
-    <Compile Include="Migrations\202012041753203_Initial7.Designer.cs">
-      <DependentUpon>202012041753203_Initial7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041802135_Initial8.cs" />
-    <Compile Include="Migrations\202012041802135_Initial8.Designer.cs">
-      <DependentUpon>202012041802135_Initial8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041822363_Initial9.cs" />
-    <Compile Include="Migrations\202012041822363_Initial9.Designer.cs">
-      <DependentUpon>202012041822363_Initial9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012041840462_Initial10.cs" />
-    <Compile Include="Migrations\202012041840462_Initial10.Designer.cs">
-      <DependentUpon>202012041840462_Initial10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012062245177_InitialCreate1.cs" />
-    <Compile Include="Migrations\202012062245177_InitialCreate1.Designer.cs">
-      <DependentUpon>202012062245177_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012062257395_InitialCreate2.cs" />
-    <Compile Include="Migrations\202012062257395_InitialCreate2.Designer.cs">
-      <DependentUpon>202012062257395_InitialCreate2.cs</DependentUpon>
+    <Compile Include="Migrations\202012102058148_initial.cs" />
+    <Compile Include="Migrations\202012102058148_initial.Designer.cs">
+      <DependentUpon>202012102058148_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Acteur.cs" />
     <Compile Include="DAL\AppRole.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientLocation.cs" />
     <Compile Include="Models\DetailPret.cs" />
     <Compile Include="Models\DVD.cs" />
+    <Compile Include="Models\FilmRetour.cs" />
     <Compile Include="Models\Films.cs" />
     <Compile Include="Models\Pret.cs" />
     <Compile Include="Models\Realisateur.cs" />
@@ -297,27 +267,36 @@
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
-    <Content Include="Views\DetailPretontroller\Create.cshtml" />
-    <Content Include="Views\DetailPretontroller\Delete.cshtml" />
-    <Content Include="Views\DetailPretontroller\Details.cshtml" />
-    <Content Include="Views\DetailPretontroller\Edit.cshtml" />
-    <Content Include="Views\DetailPretontroller\Index.cshtml" />
     <Content Include="Views\DVDs\Create.cshtml" />
     <Content Include="Views\DVDs\Delete.cshtml" />
     <Content Include="Views\DVDs\Details.cshtml" />
     <Content Include="Views\DVDs\Edit.cshtml" />
     <Content Include="Views\DVDs\Index.cshtml" />
-    <Content Include="Views\Pret\Create.cshtml" />
-    <Content Include="Views\Pret\Delete.cshtml" />
-    <Content Include="Views\Pret\Details.cshtml" />
-    <Content Include="Views\Pret\Edit.cshtml" />
-    <Content Include="Views\Pret\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Film\Create.cshtml" />
     <Content Include="Views\Film\Delete.cshtml" />
     <Content Include="Views\Film\Details.cshtml" />
-    <Content Include="Views\Film\Edit.cshtml" />
     <Content Include="Views\Film\Index.cshtml" />
+    <Content Include="Views\Facture\pdf.cshtml" />
+    <Content Include="Views\Prets\Create.cshtml" />
+    <Content Include="Views\Prets\Delete.cshtml" />
+    <Content Include="Views\Prets\Details.cshtml" />
+    <Content Include="Views\Prets\Edit.cshtml" />
+    <Content Include="Views\Prets\Index.cshtml" />
+    <Content Include="Views\DetailPret\Create.cshtml" />
+    <Content Include="Views\DetailPret\Delete.cshtml" />
+    <Content Include="Views\DetailPret\Details.cshtml" />
+    <Content Include="Views\DetailPret\Edit.cshtml" />
+    <Content Include="Views\DetailPret\Index.cshtml" />
+    <Content Include="Views\Faire\Delete.cshtml" />
+    <Content Include="Views\Faire\Details.cshtml" />
+    <Content Include="Views\Faire\Edit.cshtml" />
+    <Content Include="Views\Faire\Index.cshtml" />
+    <Content Include="Views\DetailPret\Preter.cshtml" />
+    <Content Include="Views\DetailPret\EnLocation.cshtml" />
+    <Content Include="Views\Film\topN.cshtml" />
+    <Content Include="Views\Client\Emprunteurs.cshtml" />
+    <Content Include="Views\Film\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,44 +316,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202012041210266_Initial.resx">
-      <DependentUpon>202012041210266_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041245578_Initial1.resx">
-      <DependentUpon>202012041245578_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041509322_Initial2.resx">
-      <DependentUpon>202012041509322_Initial2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041714070_Initial3.resx">
-      <DependentUpon>202012041714070_Initial3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041730417_Initial4.resx">
-      <DependentUpon>202012041730417_Initial4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041743216_Initial5.resx">
-      <DependentUpon>202012041743216_Initial5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041750297_Initial6.resx">
-      <DependentUpon>202012041750297_Initial6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041753203_Initial7.resx">
-      <DependentUpon>202012041753203_Initial7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041802135_Initial8.resx">
-      <DependentUpon>202012041802135_Initial8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041822363_Initial9.resx">
-      <DependentUpon>202012041822363_Initial9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012041840462_Initial10.resx">
-      <DependentUpon>202012041840462_Initial10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012062245177_InitialCreate1.resx">
-      <DependentUpon>202012062245177_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012062257395_InitialCreate2.resx">
-      <DependentUpon>202012062257395_InitialCreate2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012102058148_initial.resx">
+      <DependentUpon>202012102058148_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

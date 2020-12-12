@@ -1,0 +1,4 @@
+﻿@model projetVideothequedf.Models.Facture
+
+@Html.DropDownListFor(model => model.Client, new SelectList(ViewBag.Categories, "nom", "id"), "Select a Category")
+

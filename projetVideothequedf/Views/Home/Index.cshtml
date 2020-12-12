@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Index", "Home", FormMethod.Get))
 {
     <p id="bars-recherche"  style="width:60em">
-       <input type="text" name="SearchName" style="width:32em;height:2.5em" placeholder="Tapez votre recherche ici" /><input type="submit" value="Search" placeholder="" style="width:5em;height:2.5em;margin-right:2em" />
+       <input type="text" name="SearchName" style="width:32em;height:2.5em;border:none" placeholder="Tapez votre recherche ici" /><input type="submit" value="Search" placeholder="" style="width:5em;height:2.5em;margin-right:2em;border:none;background-color:white" />
     </p>
 
 }
@@ -28,9 +28,9 @@
         </select>
     </div>
     <div style="float:right; margin-left:3em">
-        <input type="number" min="1965" max="2021" name="year" placeholder="Année de sortie" style="width:10em;height:2.5em"/>
+        <input type="number" min="1965" max="2021" name="year" placeholder="Année de sortie" style="width:10em;height:2.5em;border:none;border:none"/>
 
-        <input type="submit" value="Filtrer" placeholder="" style="height:2.5em" />
+        <input type="submit" value="Filtrer" placeholder="" style="height:2.5em;background-color:white;border:none" />
     </div>
        
     }
@@ -42,11 +42,11 @@
 
     <thead>
         <tr>
-            <th>titre</th>
-            <th>poster</th>
-            <th>duree</th>
+        
+            <th>Film</th>
+            <th>Description</th>
 
-            <th>note</th>
+           
         </tr>
     </thead>
     <tbody>
@@ -61,21 +61,25 @@
         {
             foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.titre</td>
-                    <td><img src="@Url.Content(item.icon)" /></td>
-                    <td>
-                        @{
-                           
-                            int h = (int)(item.duree) / 60;
-                            int m = (int)(item.duree) % 60;
-                        }
-                        @h h: @m
+    <tr style="color:black;font-size:15px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
 
-                    </td>
+        <td><img src="@Url.Content(item.icon)" style="width:200px;height:200px;" /></td>
+        <td>
+            @{
 
-                    <td>@item.note</td>
-                </tr>
+                int h = (int)(item.duree) / 60;
+                int m = (int)(item.duree) % 60;
+            }
+            Titre : @item.titre<br /><br />Année de sortie: @item.year<br /><br />Catégorie: @item.Genre<br /><br />Durée:  @h h: @m
+        </td>
+        <td>
+         
+           
+
+        </td>
+
+
+    </tr>
                                 }
                             }
     </tbody>

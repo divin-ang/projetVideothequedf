@@ -52,11 +52,11 @@ namespace projetVideothequedf.Controllers
             switch (sortOrder)
             {
                 case "note desc":
-                    movies = movies.OrderBy(x => x.note);
+                    movies = movies.OrderBy(x => x.exemplaires);
                     break;
 
                 default: // Not: case "Default"
-                    movies = movies.OrderBy(x => x.note);
+                    movies = movies.OrderBy(x => x.exemplaires);
                     break;
             }
 

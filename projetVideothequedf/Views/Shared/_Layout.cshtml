@@ -8,9 +8,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+<body style="background-color:#eee">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:white; height:1em;">
+        <div class="container"  >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -18,18 +18,26 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" style="background-color:inherit;margin-right:14em ;padding-top:2em;border:none" 
+                    <button class="btn dropdown-toggle" style="background-color: #87ceeb;height:2em;margin-right:8em ;margin-top:1em;border:none;color:white;" 
                             type="button" 
                             data-toggle="dropdown">
                         Menu
                         <span class="caret"></span>
                     </button>
+                    <button   class="btn" style="height:2em;font-size:16px;margin-right:16em ;margin-top:1em;border:none;color:white;background-color:white;">
+                    @Html.ActionLink("Accueil", "Index", "Home" )</button>
                     <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Classement des Films", "ClassementFilm", "Film")</li>
-                        <li>@Html.ActionLink("Vidéothèque", "Index", "Film")</li>
-                        <li>@Html.ActionLink("Liste des Clients", "Index", "Client")</li>
-                        <li>@Html.ActionLink("Liste des DVD empruntés", "dvdEmprunte", "Home")</li>
-                        <li>@Html.ActionLink("Faire un prêt", "Index", "Pret")</li>
+
+                        <li>@Html.ActionLink("Liste de  prêts pour chaque client", "topN", "Film")</li>
+                        <li>@Html.ActionLink("Liste des clients", "Index", "Client")</li>
+                        <li>@Html.ActionLink("Ajouter un nouveau client", "Create", "Client")</li>
+
+                        <li>@Html.ActionLink("Liste des films en cours de location", "EnLocation", "DetailPret")</li>
+                        <li>@Html.ActionLink("Faire un prêt", "Preter", "DetailPret")</li>
+                        <li>@Html.ActionLink("Les personnes qui ont louer un film", "Emprunteurs", "Client")</li>
+                        <li>@Html.ActionLink("Ajouter un film", "Create", "Film")</li>
+
+
                     </ul>
                 </div>
            
@@ -37,11 +45,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @Html.ActionLink("FilmManager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                   
 
 
-                    <li>@Html.ActionLink("Vidéothèque", "Index", "Film")</li>
-                    <li>@Html.ActionLink("Liste des Clients", "Index", "Client")</li>
-                    <li>@Html.ActionLink("Liste des DVD empruntés", "dvdEmprunte", "Home")</li>
                 </ul>
             </div>
         </div>

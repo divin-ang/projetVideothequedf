@@ -1,0 +1,68 @@
+﻿@using projetVideothequedf.Models
+@model IEnumerable<ClientLocation>
+<link rel="stylesheet" href="~/Content/homeIndex.css" />
+
+<div style="margin-top:4em">
+    @using (Html.BeginForm("Emprunteurs", "Client", FormMethod.Post))
+    {
+        @Html.DropDownList("f", (SelectList)ViewBag.films, " Select Item  ",
+        new { style = "width: 250px; height:2em;" })
+
+        <input type="submit" value=" Chercher" />
+
+    }
+
+
+</div>
+
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Noms</th>
+
+            <th>Contacts</th>
+
+            <th>Film</th>
+            <th>Date d'emprunt </th>
+            <th>Date de retour </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red "></td>
+            </tr>
+
+        }
+        else
+        {
+            int i = 0;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.prenom @item.nom</td>
+
+                    <td> Adresse : @item.addresse<br />Courriel: @item.email <br />Tel: @item.telephone </td>
+
+
+                    <td>
+                        <p>@item.titre</p>
+                        <img src="@Url.Content(item.icon)" style="width:200px;height:200px" />
+                    </td>
+
+                    <td>@item.dateDebut</td>
+                    <td>@item.dateFin</td>
+
+
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
